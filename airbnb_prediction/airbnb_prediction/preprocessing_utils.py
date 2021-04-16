@@ -1,3 +1,4 @@
+import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -42,11 +43,11 @@ def treat_string_variables(dataframe: pd.DataFrame, variables: list) -> pd.DataF
     :return: pd.DataFrame
     """
     for variable in variables:
-        dataframe[variable]\
+        dataframe[variable] \
             .fillna(" ", inplace=True)
 
-        dataframe[variable] =\
-            dataframe[variable]\
+        dataframe[variable] = \
+            dataframe[variable] \
                 .apply(lambda x: x.replace(" ", ""))
 
     return dataframe
@@ -65,7 +66,28 @@ def count_characters_variables(dataframe: pd.DataFrame, variables: list) -> None
 
     treat_string_variables(dataframe, variables)
     for variable in variables:
-        dataframe['count_{}'.format(variable)] =\
-            dataframe[variable].\
+        dataframe['count_{}'.format(variable)] = \
+            dataframe[variable]. \
                 apply(lambda x: len(x))
 
+
+def extract_numbers(df: pd.DataFrame, variable: str, fillna: bool = True) -> None:
+    """
+    Extract numbers from strings.
+    :param fillna: Fillna with zero if true.
+    :param df: pd.DataFrame with the string variable.
+    :param variable: String variable containing numbers.
+    :return: pd.Series
+    """
+    if fillna:
+        df[variable].fillna(0, inplace=True)
+
+    numbers = np.array(
+        df[variable]
+            .str
+            .extract(
+            '([0-9][,.]*[0-9]*)'
+        )
+    )
+
+    return numbers
