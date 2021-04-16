@@ -2,6 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
+
+from airbnb_prediction import objects
+
+
+def plot_configuration(x: float = 11.7, y: float = 8.27) -> None:
+    """
+    Customizable plot size configuration for matplotlib/seaborn plots.
+    Run this function right before your seaborn plots.
+    :param x: x-axis size.
+    :param y: y-axis size.
+    :return: None
+    """
+
+    a4_dims = (x, y)
+    fig, ax = plt.subplots(figsize=a4_dims)
 
 
 def plot_missing_values(df: pd.DataFrame):
@@ -71,7 +87,7 @@ def count_characters_variables(dataframe: pd.DataFrame, variables: list) -> None
                 apply(lambda x: len(x))
 
 
-def extract_numbers(df: pd.DataFrame, variable: str, fillna: bool = True) -> None:
+def extract_numbers(df: pd.DataFrame, variable: str, fillna=True) -> None:
     """
     Extract numbers from strings.
     :param fillna: Fillna with zero if true.
@@ -80,7 +96,7 @@ def extract_numbers(df: pd.DataFrame, variable: str, fillna: bool = True) -> Non
     :return: pd.Series
     """
     if fillna:
-        df[variable].fillna(0, inplace=True)
+        df[variable] = df[variable].fillna(0)
 
     numbers = np.array(
         df[variable]
@@ -91,3 +107,25 @@ def extract_numbers(df: pd.DataFrame, variable: str, fillna: bool = True) -> Non
     )
 
     return numbers
+
+
+def creating_zones(df: pd.DataFrame) -> None:
+    """
+    Cluster neighborhoods into zones.
+    :param df:
+    :return:
+    """
+
+    df['regiao'] = np.where(df['neighbourhood_cleansed'].isin(objects.centro), 'centro',
+                            np.where(df['neighbourhood_cleansed'].isin(objects.zona_sul), 'zona_sul',
+                                     np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte), 'zona_norte',
+                                              np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte),
+                                                       'zona_norte',
+                                                       np.where(df['neighbourhood_cleansed'].isin(objects.zona_oeste),
+                                                                'zona_oeste', 'not_found')
+                                                       )
+                                              )
+                                     )
+                            )
+
+    return df['regiao']
