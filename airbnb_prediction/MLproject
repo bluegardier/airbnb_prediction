@@ -1,9 +1,0 @@
-name: test
-
-conda_env: conda.yaml
-
-entry_points:
-    main:
-        parameters:
-            n_estimators: {type: int, default: 500}
-        command: "python3 train.py {n_estimators}"
