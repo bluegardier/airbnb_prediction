@@ -129,3 +129,17 @@ def creating_zones(df: pd.DataFrame) -> None:
                             )
 
     return df['regiao']
+
+
+def creating_host_location(df: pd.DataFrame) -> None:
+    """
+    Flag indicating if host is in RJ.
+    :param df:
+    :return:
+    """
+
+    df['regiao_host'] = np.where(df['host_neighbourhood'].isin(objects.centro) |
+                                 df['host_neighbourhood'].isin(objects.zona_sul) |
+                                 df['host_neighbourhood'].isin(objects.zona_norte) |
+                                 df['host_neighbourhood'].isin(objects.zona_oeste), 1, 0)
+    return df['regiao_host']
