@@ -86,6 +86,8 @@ def count_characters_variables(dataframe: pd.DataFrame, variables: list) -> None
             dataframe[variable]. \
                 apply(lambda x: len(x))
 
+    return dataframe
+
 
 def extract_numbers(df: pd.DataFrame, variable: str, fillna=True) -> None:
     """
@@ -116,7 +118,7 @@ def creating_zones(df: pd.DataFrame) -> None:
     :return:
     """
 
-    df['regiao'] = np.where(df['neighbourhood_cleansed'].isin(objects.centro), 'centro',
+    regiao = np.where(df['neighbourhood_cleansed'].isin(objects.centro), 'centro',
                             np.where(df['neighbourhood_cleansed'].isin(objects.zona_sul), 'zona_sul',
                                      np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte), 'zona_norte',
                                               np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte),
@@ -128,7 +130,7 @@ def creating_zones(df: pd.DataFrame) -> None:
                                      )
                             )
 
-    return df['regiao']
+    return regiao
 
 
 def creating_host_location(df: pd.DataFrame) -> None:
@@ -138,11 +140,11 @@ def creating_host_location(df: pd.DataFrame) -> None:
     :return:
     """
 
-    df['regiao_host'] = np.where(df['host_neighbourhood'].isin(objects.centro) |
+    regiao_host = np.where(df['host_neighbourhood'].isin(objects.centro) |
                                  df['host_neighbourhood'].isin(objects.zona_sul) |
                                  df['host_neighbourhood'].isin(objects.zona_norte) |
-                                 df['host_neighbourhood'].isin(objects.zona_oeste), 1, 0)
-    return df['regiao_host']
+                                 df['host_neighbourhood'].isin(objects.zona_oeste), 'yes', 'no')
+    return regiao_host
 
 
 def creating_property_type_refactor(df: pd.DataFrame) -> None:
@@ -188,3 +190,18 @@ def creating_delta_date_variable(df: pd.DataFrame, minimum_date: str, maximum_da
                   pd.to_datetime(df[minimum_date])).dt.days
 
     return delta_date
+
+
+def dropping_empty_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Drops columns with no entries.
+    :param df: pd.DataFrame
+    :return: pd.DataFrame
+    """
+    prop_missings = (df.isna().sum().sort_values(ascending=False) / df.shape[0])
+    to_drop_full_nan = prop_missings[prop_missings == 1].index.to_list()
+    df.drop(to_drop_full_nan, axis=1, inplace=True)
+    return df
+
+
+
