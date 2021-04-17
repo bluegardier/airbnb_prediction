@@ -143,3 +143,48 @@ def creating_host_location(df: pd.DataFrame) -> None:
                                  df['host_neighbourhood'].isin(objects.zona_norte) |
                                  df['host_neighbourhood'].isin(objects.zona_oeste), 1, 0)
     return df['regiao_host']
+
+
+def creating_property_type_refactor(df: pd.DataFrame) -> None:
+    """
+    Refactor the variable into three categories.
+    :param df: the pd.DataFrame
+    :return: pd.Series
+    """
+
+    df['property_type_refactor'] = np.where(
+        (df['property_type'] == 'Private room in apartment') | (df['property_type'] == 'Private room in house'),
+        'private_room',
+        np.where(df['property_type'] == 'Entire apartment', 'apartment', 'other')
+    )
+
+    return df['property_type_refactor']
+
+
+def creating_delta_variable(df: pd.DataFrame, minimum_variable: str, maximum_variable: str) -> None:
+    """
+    Creates a variable holding the diference between two numeric variables.
+    :param df: pd.DataFrame
+    :param minimum_variable: The lower variable.
+    :param maximum_variable: The higher variable.
+    :return: pd.Series with delta between two variables.
+    """
+
+    delta = df[maximum_variable] - df[minimum_variable]
+
+    return delta
+
+
+def creating_delta_date_variable(df: pd.DataFrame, minimum_date: str, maximum_date: str) -> None:
+    """
+    Creates a variable holding the diference between two datetime variables.
+    :param df: pd.DataFrame
+    :param minimum_variable: The lower date variable.
+    :param maximum_variable: The higher date variable.
+    :return: pd.Series with delta between two date variables.
+    """
+
+    delta_date = (pd.to_datetime(df[maximum_date]) -
+                  pd.to_datetime(df[minimum_date])).dt.days
+
+    return delta_date
