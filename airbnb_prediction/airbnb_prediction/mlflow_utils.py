@@ -19,7 +19,8 @@ class UiConn:
         )
         print('Access for UI at: http://127.0.0.1:{}'.format(port))
 
-    def terminate_ui_session(self):
+    @staticmethod
+    def terminate_ui_session():
         get_ipython() \
             .system_raw(
             "pkill -f gunicorn"
@@ -27,7 +28,7 @@ class UiConn:
         print('MLflow UI session terminated')
 
 
-class MLflowRegressionModel:
+class TrainerReg:
     def __init__(self, estimator, params={}):
         self._model = estimator(**params)
         self._params = params
