@@ -197,7 +197,6 @@ to_drop = [
     'name',
     'host_about',
     'description',
-    'log_price',
     'neighborhood_overview',
     'host_since',
     'host_neighbourhood',
@@ -241,9 +240,9 @@ to_drop = [
     'calculated_host_listings_count_shared_rooms'
 ]
 
-to_fillna = [
-    'host_is_superhost',
-    'bedrooms',
-    'beds',
-    'days_since_host'
+string_variables = [
+    'name',
+    'description',
+    'neighborhood_overview',
+    'host_about'
 ]
