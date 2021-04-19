@@ -2,7 +2,7 @@ import pandas as pd
 from pandas import json_normalize
 from pycaret.regression import load_model, predict_model
 from flask import Flask, request, jsonify
-f
+
 
 model = load_model("../../data/model/model")
 
