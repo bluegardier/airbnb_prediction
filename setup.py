@@ -1,12 +1,14 @@
 from setuptools import setup, find_packages
 import os
 from os import path
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Model package name
 NAME = 'bagged_lightgbm'
 # Current Version
-VERSION = os.environ.get('APP_VERSION', 'latest')
+VERSION = os.getenv('APP_VERSION', 'latest')
 
 # Dependecies for the package
 with open('requirements.txt') as r:
