@@ -1,0 +1,667 @@
+2021-04-18 00:10:20,891:INFO:Initializing load_model()
+2021-04-18 00:10:20,891:INFO:load_model(model_name=../../data/model/model.pkl, platform=rb, authentication=None, verbose=True)
+2021-04-18 00:16:30,533:INFO:Initializing load_model()
+2021-04-18 00:16:30,533:INFO:load_model(model_name=../../data/model/model.pkl, platform=None, authentication=None, verbose=True)
+2021-04-18 00:17:19,678:INFO:Initializing load_model()
+2021-04-18 00:17:19,678:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:17:21,276:INFO:Initializing load_model()
+2021-04-18 00:17:21,276:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:18:56,195:INFO:Initializing predict_model()
+2021-04-18 00:18:56,195:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:18:56,195:INFO:Checking exceptions
+2021-04-18 00:18:56,195:INFO:Preloading libraries
+2021-04-18 00:19:46,788:INFO:Initializing predict_model()
+2021-04-18 00:19:46,788:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:19:46,788:INFO:Checking exceptions
+2021-04-18 00:19:46,788:INFO:Preloading libraries
+2021-04-18 00:21:11,276:INFO:Initializing load_model()
+2021-04-18 00:21:11,276:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:21:12,913:INFO:Initializing load_model()
+2021-04-18 00:21:12,913:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:21:25,835:INFO:Initializing predict_model()
+2021-04-18 00:21:25,835:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:21:25,835:INFO:Checking exceptions
+2021-04-18 00:21:25,835:INFO:Preloading libraries
+2021-04-18 00:21:48,862:INFO:Initializing predict_model()
+2021-04-18 00:21:48,862:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:21:48,862:INFO:Checking exceptions
+2021-04-18 00:21:48,862:INFO:Preloading libraries
+2021-04-18 00:27:20,635:INFO:Initializing predict_model()
+2021-04-18 00:27:20,635:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:27:20,635:INFO:Checking exceptions
+2021-04-18 00:27:20,635:INFO:Preloading libraries
+2021-04-18 00:27:46,250:INFO:Initializing load_model()
+2021-04-18 00:27:46,250:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:27:47,749:INFO:Initializing load_model()
+2021-04-18 00:27:47,749:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:27:56,041:INFO:Initializing predict_model()
+2021-04-18 00:27:56,041:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:27:56,042:INFO:Checking exceptions
+2021-04-18 00:27:56,042:INFO:Preloading libraries
+2021-04-18 00:32:24,055:INFO:Initializing predict_model()
+2021-04-18 00:32:24,056:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:32:24,056:INFO:Checking exceptions
+2021-04-18 00:32:24,056:INFO:Preloading libraries
+2021-04-18 00:32:31,787:INFO:Initializing predict_model()
+2021-04-18 00:32:31,787:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:32:31,787:INFO:Checking exceptions
+2021-04-18 00:32:31,787:INFO:Preloading libraries
+2021-04-18 00:32:44,626:INFO:Initializing predict_model()
+2021-04-18 00:32:44,626:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:32:44,626:INFO:Checking exceptions
+2021-04-18 00:32:44,626:INFO:Preloading libraries
+2021-04-18 00:34:34,043:INFO:Initializing predict_model()
+2021-04-18 00:34:34,043:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:34:34,043:INFO:Checking exceptions
+2021-04-18 00:34:34,043:INFO:Preloading libraries
+2021-04-18 00:35:49,096:INFO:Initializing load_model()
+2021-04-18 00:35:49,096:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:35:50,582:INFO:Initializing load_model()
+2021-04-18 00:35:50,582:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 00:36:03,012:INFO:Initializing predict_model()
+2021-04-18 00:36:03,012:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 00:36:03,012:INFO:Checking exceptions
+2021-04-18 00:36:03,012:INFO:Preloading libraries
+2021-04-18 10:22:13,993:INFO:Initializing load_model()
+2021-04-18 10:22:13,994:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 10:22:15,511:INFO:Initializing load_model()
+2021-04-18 10:22:15,511:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 10:23:57,070:INFO:Initializing load_model()
+2021-04-18 10:23:57,071:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 10:23:58,529:INFO:Initializing load_model()
+2021-04-18 10:23:58,529:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 10:24:16,570:INFO:Initializing load_model()
+2021-04-18 10:24:16,570:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 10:24:18,022:INFO:Initializing load_model()
+2021-04-18 10:24:18,022:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 10:50:26,457:INFO:Initializing load_model()
+2021-04-18 10:50:26,458:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 10:50:28,066:INFO:Initializing load_model()
+2021-04-18 10:50:28,067:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 11:55:01,907:INFO:Initializing load_model()
+2021-04-18 11:55:01,908:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 11:55:27,894:INFO:Initializing load_model()
+2021-04-18 11:55:27,894:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 11:55:29,371:INFO:Initializing load_model()
+2021-04-18 11:55:29,372:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 11:55:43,736:INFO:Initializing predict_model()
+2021-04-18 11:55:43,736:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 11:55:43,737:INFO:Checking exceptions
+2021-04-18 11:55:43,737:INFO:Preloading libraries
+2021-04-18 11:55:46,171:INFO:Initializing predict_model()
+2021-04-18 11:55:46,172:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 11:55:46,172:INFO:Checking exceptions
+2021-04-18 11:55:46,172:INFO:Preloading libraries
+2021-04-18 11:56:01,201:INFO:Initializing predict_model()
+2021-04-18 11:56:01,201:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 11:56:01,201:INFO:Checking exceptions
+2021-04-18 11:56:01,201:INFO:Preloading libraries
+2021-04-18 11:57:33,615:INFO:Initializing load_model()
+2021-04-18 11:57:33,615:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 11:57:39,475:INFO:Initializing predict_model()
+2021-04-18 11:57:39,475:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 11:57:39,475:INFO:Checking exceptions
+2021-04-18 11:57:39,475:INFO:Preloading libraries
+2021-04-18 11:58:13,791:INFO:Initializing load_model()
+2021-04-18 11:58:13,791:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:00:02,115:INFO:Initializing load_model()
+2021-04-18 12:00:02,115:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:00:03,549:INFO:Initializing load_model()
+2021-04-18 12:00:03,549:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:04:36,603:INFO:Initializing load_model()
+2021-04-18 12:04:36,603:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:04:38,095:INFO:Initializing load_model()
+2021-04-18 12:04:38,095:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:07:10,634:INFO:Initializing load_model()
+2021-04-18 12:07:10,634:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:07:12,129:INFO:Initializing load_model()
+2021-04-18 12:07:12,129:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:08:11,793:INFO:Initializing load_model()
+2021-04-18 12:08:11,793:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:10:59,569:INFO:Initializing load_model()
+2021-04-18 12:10:59,569:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:14:40,661:INFO:Initializing load_model()
+2021-04-18 12:14:40,661:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:32:21,967:INFO:Initializing load_model()
+2021-04-18 12:32:21,967:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:32:23,523:INFO:Initializing load_model()
+2021-04-18 12:32:23,523:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:39:12,512:INFO:Initializing load_model()
+2021-04-18 12:39:12,512:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:39:14,040:INFO:Initializing load_model()
+2021-04-18 12:39:14,040:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-04-18 12:39:38,017:INFO:Initializing predict_model()
+2021-04-18 12:39:38,018:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 12:39:38,018:INFO:Checking exceptions
+2021-04-18 12:39:38,018:INFO:Preloading libraries
+2021-04-18 12:40:33,467:INFO:Initializing predict_model()
+2021-04-18 12:40:33,467:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(categorical_features=['host_response_time',
+                                                            'host_is_superhost',
+                                                            'room_type',
+                                                            'instant_bookable',
+                                                            'half_bath',
+                                                            'regiao',
+                                                            'property_type_refactor',
+                                                            'is_host_rj'],
+                                      display_types=False,
+                                      ml_usecase='regression',
+                                      numerical_features=['accommodates',
+                                                          'bathrooms',
+                                                          'bedrooms', 'beds',
+                                                          'minimum_nights',
+                                                          'maximum_nights',
+                                                          'numbe...
+                ('fix_multi', 'passthrough'), ('dfs', 'passthrough'),
+                ('pca', 'passthrough'),
+                ['trained_model',
+                 BaggingRegressor(base_estimator=LGBMRegressor(bagging_fraction=0.8,
+                                                               bagging_freq=6,
+                                                               feature_fraction=0.6,
+                                                               learning_rate=0.005,
+                                                               min_child_samples=1,
+                                                               min_split_gain=0.9,
+                                                               n_estimators=190,
+                                                               num_leaves=50,
+                                                               random_state=16,
+                                                               reg_alpha=0.15,
+                                                               reg_lambda=1e-06),
+                                  random_state=16)]]), probability_threshold=None, encoded_labels=True, raw_score=False, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-04-18 12:40:33,467:INFO:Checking exceptions
+2021-04-18 12:40:33,467:INFO:Preloading libraries
