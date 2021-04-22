@@ -133,7 +133,7 @@ def creating_zones(df: pd.DataFrame) -> None:
     return regiao
 
 
-def objects(df: pd.DataFrame) -> None:
+def creating_host_location(df: pd.DataFrame) -> None:
     """
     Flag indicating if host is in RJ.
     :param df:
