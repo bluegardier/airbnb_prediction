@@ -4,7 +4,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from airbnb_prediction import objects
+from airbnb_prediction import config
 
 
 def plot_configuration(x: float = 11.7, y: float = 8.27) -> None:
@@ -118,12 +118,12 @@ def creating_zones(df: pd.DataFrame) -> None:
     :return:
     """
 
-    regiao = np.where(df['neighbourhood_cleansed'].isin(objects.centro), 'centro',
-                            np.where(df['neighbourhood_cleansed'].isin(objects.zona_sul), 'zona_sul',
-                                     np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte), 'zona_norte',
-                                              np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte),
+    regiao = np.where(df['neighbourhood_cleansed'].isin(config.centro), 'centro',
+                            np.where(df['neighbourhood_cleansed'].isin(config.zona_sul), 'zona_sul',
+                                     np.where(df['neighbourhood_cleansed'].isin(config.zona_norte), 'zona_norte',
+                                              np.where(df['neighbourhood_cleansed'].isin(config.zona_norte),
                                                        'zona_norte',
-                                                       np.where(df['neighbourhood_cleansed'].isin(objects.zona_oeste),
+                                                       np.where(df['neighbourhood_cleansed'].isin(config.zona_oeste),
                                                                 'zona_oeste', 'not_found')
                                                        )
                                               )
@@ -133,17 +133,17 @@ def creating_zones(df: pd.DataFrame) -> None:
     return regiao
 
 
-def creating_host_location(df: pd.DataFrame) -> None:
+def objects(df: pd.DataFrame) -> None:
     """
     Flag indicating if host is in RJ.
     :param df:
     :return:
     """
 
-    regiao_host = np.where(df['host_neighbourhood'].isin(objects.centro) |
-                                 df['host_neighbourhood'].isin(objects.zona_sul) |
-                                 df['host_neighbourhood'].isin(objects.zona_norte) |
-                                 df['host_neighbourhood'].isin(objects.zona_oeste), 'yes', 'no')
+    regiao_host = np.where(df['host_neighbourhood'].isin(config.centro) |
+                                 df['host_neighbourhood'].isin(config.zona_sul) |
+                                 df['host_neighbourhood'].isin(config.zona_norte) |
+                                 df['host_neighbourhood'].isin(config.zona_oeste), 'yes', 'no')
     return regiao_host
 
 
