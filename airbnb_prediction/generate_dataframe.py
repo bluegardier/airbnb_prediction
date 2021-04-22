@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from pycaret.regression import *
-from airbnb_prediction import preprocess, objects
+from airbnb_prediction import preprocess, config
 import pickle
 
 
@@ -42,7 +42,7 @@ def generate_dataframe(dataframe: pd.DataFrame) -> pd.DataFrame:
 
     dataframe['is_host_rj'] = preprocess.creating_host_location(df)
 
-    preprocess.count_characters_variables(dataframe, objects.string_variables)
+    preprocess.count_characters_variables(dataframe, config.string_variables)
     return dataframe
 
 
@@ -62,8 +62,8 @@ if __name__ == '__main__':
 
     df.fillna(fillna_dict, inplace=True)
 
-    df.drop(objects.to_drop, axis=1, inplace=True)
-    pickle.dump(df, open('../../data/processed/model_data.pickle', 'wb'))
+    df.drop(config.to_drop, axis=1, inplace=True)
+    pickle.dump(df, open('../data/processed/model_data.pickle', 'wb'))
 
     # Model Stage
 
