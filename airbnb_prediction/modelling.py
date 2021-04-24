@@ -5,11 +5,10 @@ from airbnb_prediction import objects
 
 
 class RegressorTrainer:
-    def __init__(self, df: pd.DataFrame, target: str, exp_name: str, session_id: int, normalize: bool = True):
+    def __init__(self, df: pd.DataFrame, target: str, exp_name: str, session_id: int = 16):
         self.df = df
         self.target = target
         self.exp_name = exp_name
-        self.normalize = normalize
         self.session_id = session_id
 
     def start_session(self):
@@ -19,8 +18,8 @@ class RegressorTrainer:
             experiment_name=self.exp_name,
             categorical_features=objects.pycaret_categorical_features,
             numeric_features=objects.pycaret_numerical_features,
-            normalize=self.normalize,
             session_id=self.session_id,
+            normalize=True,
             silent=True,
             verbose=False
         )
@@ -31,7 +30,7 @@ class RegressorTrainer:
         print('Training Tuned LightGBM, Optimize = RMSE: Step 2/3')
         tuned_lightgbm = tune_model(lightgbm, optimize='RMSE')
         print('Training Ensemble LightGBM: Step 3/3')
-        ensemble_model(tuned_lightgbm)
+        self.model = ensemble_model(tuned_lightgbm)
 
     def finalize_model(self):
         finalize_model(self.model)
