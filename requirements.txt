@@ -1,6 +1,8 @@
 ## Data Modelling
 pycaret==2.3.0
 
+## CLI
+fire==0.4.0
 
 ## Tracking Experiments
 mlflow==1.15.0
