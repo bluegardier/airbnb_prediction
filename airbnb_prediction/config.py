@@ -332,3 +332,13 @@ pycaret_categorical_features = [
     'property_type_refactor',
     'is_host_rj'
 ]
+
+
+metric_list = [
+    'MAE',
+    'MSE',
+    'RMSE',
+    'R2',
+    'RMSLE',
+    'MAPE'
+]
