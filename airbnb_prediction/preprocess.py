@@ -7,6 +7,26 @@ import matplotlib.pyplot as plt
 from airbnb_prediction import config
 
 
+def spliting_dataset():
+    """
+    Splits the dataset into train/test datasets.
+    :return: pd.DataFrame
+    """
+
+    # Reading the original CSV
+    df = pd.read_csv('{}/listings.csv'.format(config.data_dir_raw))
+
+    # Spliting into train/test datasets
+    test = df.sample(frac=.3, random_state=16)
+    train = df.drop(test.index)
+
+    # Exporting both as CSV.
+    test.to_csv('{}/listings_test.csv'.format(config.data_dir_raw), index=False)
+    train.to_csv('{}/listings_train.csv'.format(config.data_dir_raw), index=False)
+
+    return train, test
+
+
 def plot_configuration(x: float = 11.7, y: float = 8.27) -> None:
     """
     Customizable plot size configuration for matplotlib/seaborn plots.
