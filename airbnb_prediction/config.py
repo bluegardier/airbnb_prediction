@@ -1,3 +1,10 @@
+from pathlib import Path
+
+data_dir_raw = '../data/raw/'
+data_dir_processed = Path('../data/processed/')
+
+model_path = "../data/model/"
+
 zona_sul = [
     'Botafogo',
     'Catete',
@@ -245,4 +252,93 @@ string_variables = [
     'description',
     'neighborhood_overview',
     'host_about'
+]
+
+
+model_variables = [
+    "host_response_time",
+    "host_is_superhost",
+    "room_type",
+    "accommodates",
+    "bathrooms",
+    "bedrooms",
+    "beds",
+    "minimum_nights",
+    "maximum_nights",
+    "number_of_reviews",
+    "instant_bookable",
+    "days_since_host",
+    "half_bath",
+    "delta_nights",
+    "mean_reviews",
+    "regiao",
+    "property_type_refactor",
+    "is_host_rj",
+    "count_name",
+    "count_description",
+    "count_neighborhood_overview",
+    "count_host_about"
+]
+
+payload_example = [{
+    "host_response_time": "within an hour",
+     "host_is_superhost": "t",
+     "room_type": "Entire home/apt",
+     "accommodates": 5,
+     "bathrooms": 1.0,
+     "bedrooms": 2.0,
+     "beds": 2.0,
+     "minimum_nights": 5,
+     "maximum_nights": 180,
+     "number_of_reviews": 260,
+     "instant_bookable": "t",
+     "days_since_host": 4117.0,
+     "half_bath": "no",
+     "delta_nights": 175,
+     "mean_reviews": 0.9961685823754789,
+     "regiao": "zona_sul",
+     "property_type_refactor": "other",
+     "is_host_rj": "yes",
+     "count_name": 41,
+     "count_description": 835,
+     "count_neighborhood_overview": 121,
+     "count_host_about": 144
+     }]
+
+pycaret_numerical_features = [
+ 'accommodates',
+ 'bathrooms',
+ 'bedrooms',
+ 'beds',
+ 'minimum_nights',
+ 'maximum_nights',
+ 'number_of_reviews',
+ 'days_since_host',
+ 'delta_nights',
+ 'mean_reviews',
+ 'count_name',
+ 'count_description',
+ 'count_neighborhood_overview',
+ 'count_host_about'
+]
+
+pycaret_categorical_features = [
+    'host_response_time',
+    'host_is_superhost',
+    'room_type',
+    'instant_bookable',
+    'half_bath',
+    'regiao',
+    'property_type_refactor',
+    'is_host_rj'
+]
+
+
+metric_list = [
+    'MAE',
+    'MSE',
+    'RMSE',
+    'R2',
+    'RMSLE',
+    'MAPE'
 ]

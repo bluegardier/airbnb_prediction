@@ -1,0 +1,12 @@
+## Data Modelling
+pycaret==2.3.0
+
+
+## Tracking Experiments
+mlflow==1.15.0
+
+# Feature Importance
+shap==0.39.0
+
+# Virtual Enviroments
+python-dotenv

@@ -4,7 +4,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from airbnb_prediction import objects
+from airbnb_prediction import config
 
 
 def plot_configuration(x: float = 11.7, y: float = 8.27) -> None:
@@ -118,17 +118,17 @@ def creating_zones(df: pd.DataFrame) -> None:
     :return:
     """
 
-    regiao = np.where(df['neighbourhood_cleansed'].isin(objects.centro), 'centro',
-                            np.where(df['neighbourhood_cleansed'].isin(objects.zona_sul), 'zona_sul',
-                                     np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte), 'zona_norte',
-                                              np.where(df['neighbourhood_cleansed'].isin(objects.zona_norte),
-                                                       'zona_norte',
-                                                       np.where(df['neighbourhood_cleansed'].isin(objects.zona_oeste),
-                                                                'zona_oeste', 'not_found')
-                                                       )
-                                              )
-                                     )
-                            )
+    regiao = np.where(df['neighbourhood_cleansed'].isin(config.centro), 'centro',
+                      np.where(df['neighbourhood_cleansed'].isin(config.zona_sul), 'zona_sul',
+                               np.where(df['neighbourhood_cleansed'].isin(config.zona_norte), 'zona_norte',
+                                        np.where(df['neighbourhood_cleansed'].isin(config.zona_norte),
+                                                 'zona_norte',
+                                                 np.where(df['neighbourhood_cleansed'].isin(config.zona_oeste),
+                                                          'zona_oeste', 'not_found')
+                                                 )
+                                        )
+                               )
+                      )
 
     return regiao
 
@@ -140,10 +140,10 @@ def creating_host_location(df: pd.DataFrame) -> None:
     :return:
     """
 
-    regiao_host = np.where(df['host_neighbourhood'].isin(objects.centro) |
-                                 df['host_neighbourhood'].isin(objects.zona_sul) |
-                                 df['host_neighbourhood'].isin(objects.zona_norte) |
-                                 df['host_neighbourhood'].isin(objects.zona_oeste), 'yes', 'no')
+    regiao_host = np.where(df['host_neighbourhood'].isin(config.centro) |
+                           df['host_neighbourhood'].isin(config.zona_sul) |
+                           df['host_neighbourhood'].isin(config.zona_norte) |
+                           df['host_neighbourhood'].isin(config.zona_oeste), 'yes', 'no')
     return regiao_host
 
 
@@ -204,4 +204,72 @@ def dropping_empty_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def generate_features(dataframe: pd.DataFrame) -> pd.DataFrame:
+    """
+    Final Configuration do generate dataframe model.
+    :param dataframe:
+    :return:
+    """
+    dataframe['price'] = dataframe['price'] \
+        .apply(lambda x: convert_price_to_int(x))
+
+    dataframe['days_since_host'] = \
+        (pd.to_datetime('today') - pd.to_datetime(dataframe['host_since'])).dt.days
+
+    dataframe['bathroom_text_clean'] = \
+        extract_numbers(dataframe, 'bathrooms_text', fillna=True)
+
+    dataframe['bathrooms'] = np.where(dataframe['bathroom_text_clean'].isnull() == False,
+                                      (dataframe['bathroom_text_clean']).astype(float).apply(np.floor), 0)
+
+    dataframe['half_bath'] = \
+        np.where(dataframe['bathroom_text_clean'].str.isalnum() == False, 'yes', 'no')
+
+    dataframe['delta_nights'] = \
+        creating_delta_variable(dataframe, 'minimum_nights', 'maximum_nights')
+
+    dataframe['delta_date_reviews'] = \
+        creating_delta_date_variable(dataframe, 'first_review', 'last_review')
+
+    dataframe['mean_reviews'] = \
+        dataframe['number_of_reviews'] / (dataframe['number_of_reviews'].fillna(0) + 1)
+
+    dataframe['regiao'] = creating_zones(dataframe)
+
+    dataframe['property_type_refactor'] = \
+        creating_property_type_refactor(dataframe)
+
+    dataframe['is_host_rj'] = creating_host_location(dataframe)
+
+    count_characters_variables(dataframe, config.string_variables)
+    return dataframe
+
+
+def create_fillna_dict(df: pd.DataFrame) -> dict:
+    """
+    Creates dict to fillna methods.
+    :param df: The dataset.
+    :return: a dict containing the fillna methods.
+    """
+    fillna_dict = {
+        'host_response_time': 'no_info',
+        'host_is_superhost': df['host_is_superhost'].mode()[0],
+        'bedrooms': df['bedrooms'].mode()[0],
+        'beds': df['beds'].mode()[0],
+        'days_since_host': df['days_since_host'].mode()[0]
+    }
+
+    return fillna_dict
+
+
+def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Preprocess data to model.
+    :param df: The original raw dataframe.
+    :return: Dataframe for model ingestion.
+    """
+    generate_features(df)
+    dropping_empty_columns(df)
+    df.fillna(create_fillna_dict(df), inplace=True)
+    df.drop(config.to_drop, axis=1, inplace=True)
 
