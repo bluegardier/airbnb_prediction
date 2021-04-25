@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 
+
 class UiConn:
     def __init__(self):
         self.tracking_uri = mlflow.get_tracking_uri()
@@ -85,4 +86,3 @@ class TrainerReg:
             print('R2                     :', r2)
 
             return experimentID, runID
-
