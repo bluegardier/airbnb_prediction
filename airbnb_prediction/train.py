@@ -1,11 +1,10 @@
 import pandas as pd
 import numpy as np
-from pycaret.regression import *
-from airbnb_prediction import preprocess, config
+from airbnb_prediction import preprocess, config, modelling
 import pickle
 
 
-def generate_dataframe(dataframe: pd.DataFrame) -> pd.DataFrame:
+def preprocess_data(dataframe: pd.DataFrame) -> pd.DataFrame:
     """
     Final Configuration do generate dataframe model.
     :param dataframe:
@@ -47,8 +46,8 @@ def generate_dataframe(dataframe: pd.DataFrame) -> pd.DataFrame:
 
 
 if __name__ == '__main__':
-    df = pd.read_csv('../../data/raw/listings.csv')
-    generate_dataframe(df)
+    df = pd.read_csv('{}/listings.csv'.format(config.data_dir_raw))
+    preprocess_data(df)
 
     df = preprocess.dropping_empty_columns(df)
 
@@ -66,5 +65,24 @@ if __name__ == '__main__':
     pickle.dump(df, open('../data/processed/model_data.pickle', 'wb'))
 
     # Model Stage
+    print('Starting Model Stage')
+    model = modelling.RegressorTrainer(df.drop('id', axis=1), 'price', "testing")
+
+    print('Setting up Pycaret Environment')
+    model.start_session()
+
+    print("Training The Model")
+    model.train_model()
+
+    print("Finalizing The Model")
+    model.finalize_model()
+
+    print('Generated Model Saved at: {}'.format(config.model_path))
+    model.save_model("{}/model".format(config.model_path))
+
+    print('Model Performance:')
+    print(round(model.metrics.loc['Mean'], 2))
+
+
 
 
