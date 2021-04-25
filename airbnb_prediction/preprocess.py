@@ -204,7 +204,7 @@ def dropping_empty_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def preprocess_data(dataframe: pd.DataFrame) -> pd.DataFrame:
+def generate_features(dataframe: pd.DataFrame) -> pd.DataFrame:
     """
     Final Configuration do generate dataframe model.
     :param dataframe:
@@ -243,3 +243,33 @@ def preprocess_data(dataframe: pd.DataFrame) -> pd.DataFrame:
 
     count_characters_variables(dataframe, config.string_variables)
     return dataframe
+
+
+def create_fillna_dict(df: pd.DataFrame) -> dict:
+    """
+    Creates dict to fillna methods.
+    :param df: The dataset.
+    :return: a dict containing the fillna methods.
+    """
+    fillna_dict = {
+        'host_response_time': 'no_info',
+        'host_is_superhost': df['host_is_superhost'].mode()[0],
+        'bedrooms': df['bedrooms'].mode()[0],
+        'beds': df['beds'].mode()[0],
+        'days_since_host': df['days_since_host'].mode()[0]
+    }
+
+    return fillna_dict
+
+
+def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Preprocess data to model.
+    :param df: The original raw dataframe.
+    :return: Dataframe for model ingestion.
+    """
+    generate_features(df)
+    dropping_empty_columns(df)
+    df.fillna(create_fillna_dict(df), inplace=True)
+    df.drop(config.to_drop, axis=1, inplace=True)
+
