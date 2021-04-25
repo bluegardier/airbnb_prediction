@@ -1,6 +1,24 @@
+import json
 import pandas as pd
 import pycaret.regression as pcr
 from airbnb_prediction import config
+from pycaret.utils import check_metric
+
+
+def evaluation_metrics(df: pd.DataFrame, export_metrics: bool = False) -> None:
+    metric_values = []
+    print('Model Evaluation Performance:')
+
+    for metric in config.metric_list:
+        value = round(check_metric(df['price'], df['Label'], metric=metric), 2)
+        metric_values.append(value)
+
+    evaluation = dict(zip(config.metric_list, metric_values))
+    print(evaluation)
+
+    if export_metrics:
+        with open('../data/model/evaluation.json', 'w') as file:
+            json.dump(evaluation, file)
 
 
 class RegressorTrainer:
@@ -41,15 +59,15 @@ class RegressorTrainer:
         """
         print('Training LightGBM: Step 1/3')
         lightgbm = pcr.create_model('lightgbm',
-                                verbose=False)
+                                    verbose=False)
 
         print('Training Tuned LightGBM, Optimize = RMSE: Step 2/3')
         tuned_lightgbm = pcr.tune_model(lightgbm, optimize='RMSE',
-                                    verbose=False)
+                                        verbose=False)
 
         print('Training Ensemble LightGBM: Step 3/3')
         self.model = pcr.ensemble_model(tuned_lightgbm,
-                                    verbose=False)
+                                        verbose=False)
         self.metrics = pcr.pull()
 
     def finalize_model(self):
@@ -71,14 +89,26 @@ class RegressorTrainer:
         """
         pcr.save_model(self.model, path)
 
-    def predict_model(self, data: pd.DataFrame):
+    def load_model(self, path: str):
         """
-        Predicts model on unseen data.
-        :param data: a new unseen dataframe.
-        :return: float. Prediction on unseen data.
+        Loads the model.
+        :param path: Model's path.
+        :return: Model
         """
-        prediction = pcr.predict_model(estimator=self.model, data=data)
-        return prediction['Label'][0]
+        self.model = pcr.load_model(path)
+
+    def predict_model(self, data: pd.DataFrame, export_metrics: bool = False):
+        """
+        Make predictions with unseen data.
+        :param data: The new and unseen data for predictions.
+        :param export_metrics: Checks if model performance metrics are exported.
+        :return: None
+        """
+
+        self.predict = pcr.predict_model(estimator=self.model, data=data)
+        evaluation_metrics(self.predict, export_metrics)
+
+        return self.predict
 
     @property
     def get_model(self):
