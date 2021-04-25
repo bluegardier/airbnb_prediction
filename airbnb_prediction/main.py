@@ -1,3 +1,4 @@
+import fire
 import pandas as pd
 import numpy as np
 from airbnb_prediction import preprocess, config, modelling
@@ -20,6 +21,10 @@ def features():
 
 
 def deploy_model():
+    """
+    Deploy Model
+    :return:
+    """
 
     df = pickle.load(open('../data/processed/data_train.pickle', 'rb'))
 
@@ -41,6 +46,10 @@ def deploy_model():
 
 
 def evaluate_model():
+    """
+    Evaluates model.
+    :return:
+    """
     df = pickle.load(open('../data/processed/data_test.pickle', 'rb'))
 
     model = modelling.RegressorTrainer(df.drop('id', axis=1), 'price', "validation")
@@ -51,6 +60,10 @@ def evaluate_model():
 
 
 def run():
+    """
+    Run all model pipeline steps sequentially.
+    :return:
+    """
     features()
     deploy_model()
     evaluate_model()
@@ -58,7 +71,7 @@ def run():
 
 def cli():
     """ Caller to transform module in a low-level CLI """
-    return
+    return fire.Fire()
 
 
 if __name__ == '__main__':
