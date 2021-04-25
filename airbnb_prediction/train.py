@@ -46,7 +46,7 @@ def preprocess_data(dataframe: pd.DataFrame) -> pd.DataFrame:
 
 
 if __name__ == '__main__':
-    df = pd.read_csv('{}/listings.csv'.format(config.data_dir_raw))
+    df = pd.read_csv('{}/listings_train.csv'.format(config.data_dir_raw))
     preprocess_data(df)
 
     df = preprocess.dropping_empty_columns(df)
