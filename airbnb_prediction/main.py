@@ -4,20 +4,24 @@ import numpy as np
 from airbnb_prediction import preprocess, config, modelling
 import pickle
 
-
-def features():
+# Argument only to test Fire's functionality
+def features(path: str = '../data/processed/data_train.pickle'):
     """
     Method to split, clean and preprocess data.
     :return:
     """
+
+    #train_save_path = kwargs.get(path, '../data/processed/data_train.pickle')
+
     # Splits
     df_train, df_test = preprocess.spliting_dataset()
 
     preprocess.preprocess_data(df_train)
     preprocess.preprocess_data(df_test)
 
-    pickle.dump(df_train, open('../data/processed/data_train.pickle', 'wb'))
+    pickle.dump(df_train, open(path, 'wb'))
     pickle.dump(df_test, open('../data/processed/data_test.pickle', 'wb'))
+    print("Generating Datasets for Model Training")
 
 
 def deploy_model():
