@@ -12,20 +12,17 @@ class UiConn:
 
     def create_ui_session(self, port=5555):
         mlflow.set_tracking_uri(self.tracking_uri)
-        get_ipython() \
-            .system_raw(
-            "mlflow ui --backend-store-uri {} --port {} &"
-                .format(self.tracking_uri, port)
+        get_ipython().system_raw(
+            "mlflow ui --backend-store-uri {} --port {} &".format(
+                self.tracking_uri, port
+            )
         )
-        print('Access for UI at: http://127.0.0.1:{}'.format(port))
+        print("Access for UI at: http://127.0.0.1:{}".format(port))
 
     @staticmethod
     def terminate_ui_session():
-        get_ipython() \
-            .system_raw(
-            "pkill -f gunicorn"
-        )
-        print('MLflow UI session terminated')
+        get_ipython().system_raw("pkill -f gunicorn")
+        print("MLflow UI session terminated")
 
 
 class TrainerReg:
@@ -41,7 +38,9 @@ class TrainerReg:
     def params(self):
         return self._params
 
-    def mlflow_run(self, df, target, model_name, r_name="default_experiment", log_price=False):
+    def mlflow_run(
+            self, df, target, model_name, r_name="default_experiment", log_price=False
+    ):
         with mlflow.start_run(run_name=r_name) as run:
             runID = run.info.run_uuid
             experimentID = run.info.experiment_id
@@ -49,9 +48,9 @@ class TrainerReg:
             X = df.drop(target, axis=1)
             y = df[target]
 
-            X_train, X_test, \
-            y_train, y_test = \
-                train_test_split(X, y, test_size=0.2, random_state=0)
+            X_train, X_test, y_train, y_test = train_test_split(
+                X, y, test_size=0.2, random_state=0
+            )
 
             sc = StandardScaler()
             X_train = sc.fit_transform(X_train)
@@ -78,11 +77,14 @@ class TrainerReg:
             mlflow.log_metric("r2", r2)
 
             print("-" * 100)
-            print("Inside MLflow Run with run_id {} and experiment_id {}".format(runID, experimentID))
-            print('Mean Absolute Error    :', mae)
-            print('Mean Squared Error     :', mse)
-            print('Root Mean Squared Error:', rmse)
-            print('R2                     :', r2)
+            print(
+                "Inside MLflow Run with run_id {} and experiment_id {}".format(
+                    runID, experimentID
+                )
+            )
+            print("Mean Absolute Error    :", mae)
+            print("Mean Squared Error     :", mse)
+            print("Root Mean Squared Error:", rmse)
+            print("R2                     :", r2)
 
             return experimentID, runID
-
