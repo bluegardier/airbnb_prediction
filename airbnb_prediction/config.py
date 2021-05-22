@@ -160,7 +160,7 @@ zona_oeste = [
     'Pedra de Guaratiba',
     'Santa Cruz',
     'Senador Vasconcelos',
-    'Sepetiba'
+    'Sepetiba',
 ]
 
 centro = [
@@ -244,14 +244,14 @@ to_drop = [
     'calculated_host_listings_count',
     'calculated_host_listings_count_entire_homes',
     'calculated_host_listings_count_private_rooms',
-    'calculated_host_listings_count_shared_rooms'
+    'calculated_host_listings_count_shared_rooms',
 ]
 
 string_variables = [
     'name',
     'description',
     'neighborhood_overview',
-    'host_about'
+    'host_about',
 ]
 
 
@@ -277,7 +277,7 @@ model_variables = [
     "count_name",
     "count_description",
     "count_neighborhood_overview",
-    "count_host_about"
+    "count_host_about",
 ]
 
 payload_example = [{
@@ -302,7 +302,7 @@ payload_example = [{
      "count_name": 41,
      "count_description": 835,
      "count_neighborhood_overview": 121,
-     "count_host_about": 144
+     "count_host_about": 144,
      }]
 
 pycaret_numerical_features = [
@@ -319,7 +319,7 @@ pycaret_numerical_features = [
  'count_name',
  'count_description',
  'count_neighborhood_overview',
- 'count_host_about'
+ 'count_host_about',
 ]
 
 pycaret_categorical_features = [
@@ -330,7 +330,7 @@ pycaret_categorical_features = [
     'half_bath',
     'regiao',
     'property_type_refactor',
-    'is_host_rj'
+    'is_host_rj',
 ]
 
 
@@ -340,5 +340,5 @@ metric_list = [
     'RMSE',
     'R2',
     'RMSLE',
-    'MAPE'
+    'MAPE',
 ]
