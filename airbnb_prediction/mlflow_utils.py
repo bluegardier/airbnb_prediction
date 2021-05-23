@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 
+
 class UiConn:
     def __init__(self):
         self.tracking_uri = mlflow.get_tracking_uri()
@@ -39,7 +40,7 @@ class TrainerReg:
         return self._params
 
     def mlflow_run(
-            self, df, target, model_name, r_name="default_experiment", log_price=False
+        self, df, target, model_name, r_name="default_experiment", log_price=False
     ):
         with mlflow.start_run(run_name=r_name) as run:
             runID = run.info.run_uuid
