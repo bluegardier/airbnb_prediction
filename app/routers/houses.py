@@ -2,7 +2,7 @@ from fastapi import APIRouter, Body
 import pandas as pd
 from pycaret.regression import load_model, predict_model
 
-model = load_model("../data/model/model")
+model = load_model("../../data/model/model")
 router = APIRouter()
 
 
