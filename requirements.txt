@@ -1,6 +1,8 @@
 ## Data Modelling
 pycaret==2.3.0
 
+## CLI
+fire==0.4.0
 
 ## Tracking Experiments
 mlflow==1.15.0
@@ -10,3 +12,8 @@ shap==0.39.0
 
 # Virtual Enviroments
 python-dotenv
+
+# API
+fastapi==0.65.1
+uvloop==0.14.0
+uvicorn==0.13.4
