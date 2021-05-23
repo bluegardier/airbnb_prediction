@@ -247,7 +247,12 @@ to_drop = [
     "calculated_host_listings_count_shared_rooms",
 ]
 
-string_variables = ["name", "description", "neighborhood_overview", "host_about",]
+string_variables = [
+    "name",
+    "description",
+    "neighborhood_overview",
+    "host_about",
+]
 
 model_variables = [
     "host_response_time",
@@ -329,4 +334,11 @@ pycaret_categorical_features = [
     "is_host_rj",
 ]
 
-metric_list = ["MAE", "MSE", "RMSE", "R2", "RMSLE", "MAPE",]
+metric_list = [
+    "MAE",
+    "MSE",
+    "RMSE",
+    "R2",
+    "RMSLE",
+    "MAPE",
+]
