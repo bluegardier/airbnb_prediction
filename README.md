@@ -18,6 +18,7 @@ To run this project locally:
 ```
 git clone https://github.com/bluegardier/airbnb_prediction.git
 cd airbnb_prediction
+pip install requirements.txt
 pip install .
 ``` 
 
