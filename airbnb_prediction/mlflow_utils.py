@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 
-
+# get_ipython is a jupyter function.
 class UiConn:
     def __init__(self):
         self.tracking_uri = mlflow.get_tracking_uri()
