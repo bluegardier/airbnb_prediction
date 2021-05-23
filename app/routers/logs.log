@@ -1,0 +1,6 @@
+2021-05-22 18:38:14,627:INFO:Initializing load_model()
+2021-05-22 18:38:14,627:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
+2021-05-22 21:28:24,628:INFO:Initializing load_model()
+2021-05-22 21:28:24,628:INFO:load_model(model_name=../data/model/model, platform=None, authentication=None, verbose=True)
+2021-05-22 21:28:58,192:INFO:Initializing load_model()
+2021-05-22 21:28:58,193:INFO:load_model(model_name=../../data/model/model, platform=None, authentication=None, verbose=True)
