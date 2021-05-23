@@ -23,7 +23,7 @@ def evaluation_metrics(df: pd.DataFrame, export_metrics: bool = False) -> None:
 
 class RegressorTrainer:
     def __init__(
-            self, df: pd.DataFrame, target: str, exp_name: str, session_id: int = 16
+        self, df: pd.DataFrame, target: str, exp_name: str, session_id: int = 16
     ):
         """
         Initialize classe objects.
