@@ -14,15 +14,15 @@ def spliting_dataset():
     """
 
     # Reading the original CSV
-    df = pd.read_csv("{}/listings.csv".format(config.data_dir_raw))
+    df = pd.read_csv('{}/listings.csv'.format(config.data_dir_raw))
 
     # Spliting into train/test datasets
-    test = df.sample(frac=0.3, random_state=16)
+    test = df.sample(frac=.3, random_state=16)
     train = df.drop(test.index)
 
     # Exporting both as CSV.
-    test.to_csv("{}/listings_test.csv".format(config.data_dir_raw), index=False)
-    train.to_csv("{}/listings_train.csv".format(config.data_dir_raw), index=False)
+    test.to_csv('{}/listings_test.csv'.format(config.data_dir_raw), index=False)
+    train.to_csv('{}/listings_train.csv'.format(config.data_dir_raw), index=False)
 
     return train, test
 
@@ -46,13 +46,13 @@ def plot_missing_values(df: pd.DataFrame):
     :param df: a pd.DataFrame of interest.
     :return: Plot with missing values for each variable.
     """
-    prop_missings = df.isna().sum().sort_values(ascending=False) / df.shape[0]
+    prop_missings = (df.isna().sum().sort_values(ascending=False) / df.shape[0])
     f, _ = plt.subplots(figsize=(20, 10))
-    plt.xticks(rotation="90")
+    plt.xticks(rotation='90')
     sns.barplot(x=prop_missings.index, y=prop_missings)
-    plt.xlabel("Variables", fontsize=15)
-    plt.ylabel("% of Missings", fontsize=15)
-    plt.title("% of Missings for Variable", fontsize=15)
+    plt.xlabel('Variables', fontsize=15)
+    plt.ylabel('% of Missings', fontsize=15)
+    plt.title('% of Missings for Variable', fontsize=15)
 
 
 def convert_price_to_int(price: str) -> int:
@@ -79,14 +79,17 @@ def treat_string_variables(dataframe: pd.DataFrame, variables: list) -> pd.DataF
     :return: pd.DataFrame
     """
     for variable in variables:
-        dataframe[variable].fillna(" ", inplace=True)
+        dataframe[variable] \
+            .fillna(" ", inplace=True)
 
-        dataframe[variable] = dataframe[variable].apply(lambda x: x.replace(" ", ""))
+        dataframe[variable] = \
+            dataframe[variable] \
+                .apply(lambda x: x.replace(" ", ""))
 
     return dataframe
 
 
-def count_characters_variables(dataframe: pd.DataFrame, variables: list) -> pd.DataFrame:
+def count_characters_variables(dataframe: pd.DataFrame, variables: list) -> None:
     """
     Create count variables from variables list parameter.
     :param dataframe: pd.DataFrame
@@ -99,14 +102,14 @@ def count_characters_variables(dataframe: pd.DataFrame, variables: list) -> pd.D
 
     treat_string_variables(dataframe, variables)
     for variable in variables:
-        dataframe["count_{}".format(variable)] = dataframe[variable].apply(
-            lambda x: len(x)
-        )
+        dataframe['count_{}'.format(variable)] = \
+            dataframe[variable]. \
+                apply(lambda x: len(x))
 
     return dataframe
 
 
-def extract_numbers(df: pd.DataFrame, variable: str, fillna=True) -> pd.Series:
+def extract_numbers(df: pd.DataFrame, variable: str, fillna=True) -> None:
     """
     Extract numbers from strings.
     :param fillna: Fillna with zero if true.
@@ -117,80 +120,70 @@ def extract_numbers(df: pd.DataFrame, variable: str, fillna=True) -> pd.Series:
     if fillna:
         df[variable] = df[variable].fillna(0)
 
-    numbers = np.array(df[variable].str.extract("([0-9][,.]*[0-9]*)"))
+    numbers = np.array(
+        df[variable]
+            .str
+            .extract(
+            '([0-9][,.]*[0-9]*)'
+        )
+    )
 
     return numbers
 
 
-def creating_zones(df: pd.DataFrame) -> pd.Series:
+def creating_zones(df: pd.DataFrame) -> None:
     """
     Cluster neighborhoods into zones.
     :param df:
     :return:
     """
 
-    regiao = np.where(
-        df["neighbourhood_cleansed"].isin(config.centro),
-        "centro",
-        np.where(
-            df["neighbourhood_cleansed"].isin(config.zona_sul),
-            "zona_sul",
-            np.where(
-                df["neighbourhood_cleansed"].isin(config.zona_norte),
-                "zona_norte",
-                np.where(
-                    df["neighbourhood_cleansed"].isin(config.zona_norte),
-                    "zona_norte",
-                    np.where(
-                        df["neighbourhood_cleansed"].isin(config.zona_oeste),
-                        "zona_oeste",
-                        "not_found")
-                    )
-                )
-            )
-        )
+    regiao = np.where(df['neighbourhood_cleansed'].isin(config.centro), 'centro',
+                      np.where(df['neighbourhood_cleansed'].isin(config.zona_sul), 'zona_sul',
+                               np.where(df['neighbourhood_cleansed'].isin(config.zona_norte), 'zona_norte',
+                                        np.where(df['neighbourhood_cleansed'].isin(config.zona_norte),
+                                                 'zona_norte',
+                                                 np.where(df['neighbourhood_cleansed'].isin(config.zona_oeste),
+                                                          'zona_oeste', 'not_found')
+                                                 )
+                                        )
+                               )
+                      )
 
     return regiao
 
 
-def creating_host_location(df: pd.DataFrame) -> pd.Series:
+def creating_host_location(df: pd.DataFrame) -> None:
     """
     Flag indicating if host is in RJ.
     :param df:
-    :return: pd.Series
+    :return:
     """
 
-    regiao_host = np.where(
-        df["host_neighbourhood"].isin(config.centro)
-        | df["host_neighbourhood"].isin(config.zona_sul)
-        | df["host_neighbourhood"].isin(config.zona_norte)
-        | df["host_neighbourhood"].isin(config.zona_oeste),
-        "yes",
-        "no"
-    )
+    regiao_host = np.where(df['host_neighbourhood'].isin(config.centro) |
+                           df['host_neighbourhood'].isin(config.zona_sul) |
+                           df['host_neighbourhood'].isin(config.zona_norte) |
+                           df['host_neighbourhood'].isin(config.zona_oeste), 'yes', 'no')
     return regiao_host
 
 
-def creating_property_type_refactor(df: pd.DataFrame) -> pd.Series:
+def creating_property_type_refactor(df: pd.DataFrame) -> None:
     """
     Refactor the variable into three categories.
     :param df: the pd.DataFrame
     :return: pd.Series
     """
 
-    df["property_type_refactor"] = np.where(
-        (df["property_type"] == "Private room in apartment")
-        | (df["property_type"] == "Private room in house"),
-        "private_room",
-        np.where(df["property_type"] == "Entire apartment", "apartment", "other")
+    df['property_type_refactor'] = np.where(
+        (df['property_type'] == 'Private room in apartment') | (df['property_type'] == 'Private room in house'),
+        'private_room',
+        np.where(df['property_type'] == 'Entire apartment', 'apartment', 'other')
     )
 
-    return df["property_type_refactor"]
+    return df['property_type_refactor']
 
 
-def creating_delta_variable(
-        df: pd.DataFrame, minimum_variable: str, maximum_variable: str
-) -> pd.Series:
+def creating_delta_variable(df: pd.DataFrame, minimum_variable: str, maximum_variable: str) -> None:
     """
     Creates a variable holding the diference between two numeric variables.
     :param df: pd.DataFrame
@@ -204,9 +197,7 @@ def creating_delta_variable(
     return delta
 
 
-def creating_delta_date_variable(
-        df: pd.DataFrame, minimum_date: str, maximum_date: str
-) -> pd.Series:
+def creating_delta_date_variable(df: pd.DataFrame, minimum_date: str, maximum_date: str) -> None:
     """
     Creates a variable holding the diference between two datetime variables.
     :param df: pd.DataFrame
@@ -227,7 +218,7 @@ def dropping_empty_columns(df: pd.DataFrame) -> pd.DataFrame:
     :param df: pd.DataFrame
     :return: pd.DataFrame
     """
-    prop_missings = df.isna().sum().sort_values(ascending=False) / df.shape[0]
+    prop_missings = (df.isna().sum().sort_values(ascending=False) / df.shape[0])
     to_drop_full_nan = prop_missings[prop_missings == 1].index.to_list()
     df.drop(to_drop_full_nan, axis=1, inplace=True)
     return df
@@ -239,43 +230,36 @@ def generate_features(dataframe: pd.DataFrame) -> pd.DataFrame:
     :param dataframe:
     :return:
     """
-    dataframe["price"] = dataframe["price"].apply(lambda x: convert_price_to_int(x))
+    dataframe['price'] = dataframe['price'] \
+        .apply(lambda x: convert_price_to_int(x))
 
-    dataframe["days_since_host"] = (
-            pd.to_datetime("today") - pd.to_datetime(dataframe["host_since"])
-    ).dt.days
+    dataframe['days_since_host'] = \
+        (pd.to_datetime('today') - pd.to_datetime(dataframe['host_since'])).dt.days
 
-    dataframe["bathroom_text_clean"] = extract_numbers(
-        dataframe, "bathrooms_text", fillna=True
-    )
+    dataframe['bathroom_text_clean'] = \
+        extract_numbers(dataframe, 'bathrooms_text', fillna=True)
 
-    dataframe["bathrooms"] = np.where(
-        dataframe["bathroom_text_clean"].isnull() == False,
-        (dataframe["bathroom_text_clean"]).astype(float).apply(np.floor),
-        0
-    )
+    dataframe['bathrooms'] = np.where(dataframe['bathroom_text_clean'].isnull() == False,
+                                      (dataframe['bathroom_text_clean']).astype(float).apply(np.floor), 0)
 
-    dataframe["half_bath"] = np.where(
-        dataframe["bathroom_text_clean"].str.isalnum() == False, "yes", "no"
-    )
+    dataframe['half_bath'] = \
+        np.where(dataframe['bathroom_text_clean'].str.isalnum() == False, 'yes', 'no')
 
-    dataframe["delta_nights"] = creating_delta_variable(
-        dataframe, "minimum_nights", "maximum_nights"
-    )
+    dataframe['delta_nights'] = \
+        creating_delta_variable(dataframe, 'minimum_nights', 'maximum_nights')
 
-    dataframe["delta_date_reviews"] = creating_delta_date_variable(
-        dataframe, "first_review", "last_review"
-    )
+    dataframe['delta_date_reviews'] = \
+        creating_delta_date_variable(dataframe, 'first_review', 'last_review')
 
-    dataframe["mean_reviews"] = dataframe["number_of_reviews"] / (
-            dataframe["number_of_reviews"].fillna(0) + 1
-    )
+    dataframe['mean_reviews'] = \
+        dataframe['number_of_reviews'] / (dataframe['number_of_reviews'].fillna(0) + 1)
 
-    dataframe["regiao"] = creating_zones(dataframe)
+    dataframe['regiao'] = creating_zones(dataframe)
 
-    dataframe["property_type_refactor"] = creating_property_type_refactor(dataframe)
+    dataframe['property_type_refactor'] = \
+        creating_property_type_refactor(dataframe)
 
-    dataframe["is_host_rj"] = creating_host_location(dataframe)
+    dataframe['is_host_rj'] = creating_host_location(dataframe)
 
     count_characters_variables(dataframe, config.string_variables)
     return dataframe
@@ -288,17 +272,17 @@ def create_fillna_dict(df: pd.DataFrame) -> dict:
     :return: a dict containing the fillna methods.
     """
     fillna_dict = {
-        "host_response_time": "no_info",
-        "host_is_superhost": df["host_is_superhost"].mode()[0],
-        "bedrooms": df["bedrooms"].mode()[0],
-        "beds": df["beds"].mode()[0],
-        "days_since_host": df["days_since_host"].mode()[0],
+        'host_response_time': 'no_info',
+        'host_is_superhost': df['host_is_superhost'].mode()[0],
+        'bedrooms': df['bedrooms'].mode()[0],
+        'beds': df['beds'].mode()[0],
+        'days_since_host': df['days_since_host'].mode()[0]
     }
 
     return fillna_dict
 
 
-def preprocess_data(df: pd.DataFrame):
+def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     Preprocess data to model.
     :param df: The original raw dataframe.
@@ -308,3 +292,4 @@ def preprocess_data(df: pd.DataFrame):
     dropping_empty_columns(df)
     df.fillna(create_fillna_dict(df), inplace=True)
     df.drop(config.to_drop, axis=1, inplace=True)
+
