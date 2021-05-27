@@ -1,0 +1,8 @@
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# logs
+*.log
+
+# mlruns
+**/mlruns
